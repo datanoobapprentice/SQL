@@ -1,0 +1,124 @@
+# This is my first sql project for my Data Analytics Course (Break into Tech - Ms. Charlotte Chaze's Data Analytics Program)
+# The task is to create a store database at the Khan Academy platform but I decided to use MySQL Workbench instead
+# This is just a simple fantasy wine store  
+# The product names are fake names I got from an online name generator (https://thestoryshack.com/tools/wine-name-generator/random-wine-names/)
+
+-- create a wine store database
+
+DROP DATABASE IF EXISTS winestore;
+
+CREATE DATABASE winestore;
+
+-- create the 'products' table
+
+CREATE TABLE winestore.products
+(
+	product_id TINYINT PRIMARY KEY AUTO_INCREMENT,
+    product_name VARCHAR(50) NOT NULL,
+    category VARCHAR(50),
+    varietal_or_type VARCHAR(50),
+    country VARCHAR(50),
+    volume_in_liters DECIMAL(4,3),
+    unit_price DECIMAL(6,2) NOT NULL,
+    stock TINYINT NOT NULL
+);
+
+-- insert table data
+
+INSERT INTO winestore.products
+VALUES
+	(1, 'Benis Süss', 'Red', 'Pinot Noir', 'Italy', 0.750, 576, 9),
+	(2, 'Birharton', 'Sparkling', 'Prosecco', 'Argentina', 1, 151, 12),
+	(3, 'Branots', 'Sparkling', 'Champagne', 'Spain', 0.750, 1662, 24),
+	(4, 'Brareich Rouge', 'Sparkling', 'Champagne', 'Italy', 0.750, 1034, 12),
+	(5, 'Bulla Doce', 'Red', 'Merlot', 'Argentina', 0.750, 734, 12),
+	(6, 'Burtin Doux', 'Red', 'Pinot Noir', 'Italy', 0.750, 1591, 17),
+	(7, 'Charthozeaux Sec', 'White', 'Moscato', 'Argentina', 0.750, 227, 17),
+	(8, 'Chenevel Rouge', 'Red', 'Cabernet Sauvignon', 'Italy', 1, 1281, 12),
+	(9, 'Culraulbot Amabile', 'Red', 'Cabernet Sauvignon', 'Italy', 1, 1982, 13),
+	(10, 'Dhimumeur', 'Dessert', 'Vermouth', 'United States', 0.750, 1585, 7),
+	(11, 'Ecella Classic', 'Red', 'Merlot', 'France', 0.750, 537, 5),
+	(12, 'Eolbot Süss', 'White', 'Moscato', 'Italy', 1, 713, 13),
+	(13, 'Fartzarton Halbtrocken', 'Red', 'Merlot', 'France', 0.750, 1476, 8),
+	(14, 'Fireich Liquoroso', 'Rosé', 'Pinot Grigio', 'France', 0.750, 191, 19),
+	(15, 'Fleleenots Frizzante', 'Rosé', 'Pinot Grigio', 'Chile', 0.750, 212, 6),
+	(16, 'Fueirhiblis Granvas', 'Rosé', 'Sangiovese', 'Chile', 0.750, 1680, 19),
+	(17, 'Galy Frizzante', 'Red', 'Merlot', 'Italy', 0.750, 1583, 9),
+	(18, 'Geegdouinieux Annata', 'Rosé', 'Zinfandel', 'Italy', 0.750, 1784, 12),
+	(19, 'Hailique Annata', 'Red', 'Cabernet Sauvignon', 'Chile', 1, 1803, 12),
+	(20, 'Henhorno', 'Dessert', 'Marsala', 'Chile', 0.750, 957, 24),
+	(21, 'Iarhibera Invecchiato', 'Red', 'Cabernet Sauvignon', 'Spain', 0.750, 308, 24),
+	(22, 'Irol Doux', 'Red', 'Pinot Noir', 'Spain', 0.750, 1870, 17),
+	(23, 'Itour Adega', 'White', 'Chardonnay', 'Australia', 0.750, 1178, 21),
+	(24, 'Jamblovry', 'Red', 'Cabernet Sauvignon', 'France', 0.750, 502, 25),
+	(25, 'Jeaumes Branco', 'Red', 'Cabernet Sauvignon', 'Italy', 0.750, 1878, 7),
+	(26, 'Kurons Adamado', 'Red', 'Pinot Noir', 'United States', 0.750, 1140, 13),
+	(27, 'Lannasson', 'Red', 'Merlot', 'France', 1, 1465, 20),
+	(28, 'Lechen Viejo', 'White', 'Sauvignon Blanc', 'Chile', 1, 1278, 19),
+	(29, 'Lirtacchus Halbtrocken', 'Sparkling', 'Prosecco', 'France', 1, 1607, 24),
+	(30, 'Lorfique Frizzante', 'Red', 'Merlot', 'Australia', 0.750, 831, 12),
+	(31, 'Luraud Branco', 'Red', 'Pinot Noir', 'Italy', 1, 1383, 14),
+	(32, 'Maurbagrube Liquoroso', 'Red', 'Merlot', 'Australia', 1, 1220, 16),
+	(33, 'Nionett Branco', 'Red', 'Pinot Noir', 'Spain', 0.750, 1086, 14),
+	(34, 'Ocertin Rouge', 'White', 'Chardonnay', 'Italy', 0.750, 825, 13),
+	(35, 'Ochage', 'White', 'Moscato', 'United States', 0.750, 1921, 6),
+	(36, 'Ogronon Dolce', 'Sparkling', 'Champagne', 'Italy', 0.750, 135, 5),
+	(37, 'Pilbot', 'Red', 'Cabernet Sauvignon', 'France', 0.750, 1788, 21),
+	(38, 'Piviecati Mousseux', 'Red', 'Cabernet Sauvignon', 'Italy', 0.750, 1885, 24),
+	(39, 'Qisus Clairet', 'Red', 'Cabernet Sauvignon', 'France', 0.750, 379, 10),
+	(40, 'Racati Secco', 'Dessert', 'Sherry', 'Chile', 0.750, 725, 8),
+	(41, 'Rofexin', 'Red', 'Pinot Noir', 'United States', 0.750, 1305, 8),
+	(42, 'Ruegaignon Száraz', 'Dessert', 'Marsala', 'Italy', 0.750, 910, 15),
+	(43, 'Sefement', 'Red', 'Merlot', 'Australia', 1, 1420, 15),
+	(44, 'Shibles Mousseux', 'Red', 'Pinot Noir', 'Argentina', 1, 1108, 22),
+	(45, 'Sirlueuntre Clairet', 'Red', 'Pinot Noir', 'Spain', 0.750, 560, 24),
+	(46, 'Sogogueil Frizzante', 'Sparkling', 'Champagne', 'Italy', 0.750, 927, 19),
+	(47, 'Suvrumes Dolce', 'Rosé', 'Zinfandel', 'Spain', 1, 1593, 23),
+	(48, 'Usbeegnon Dulce', 'Dessert', 'Sherry', 'Spain', 1, 1866, 11),
+	(49, 'Waundrignon Noir', 'White', 'Chardonnay', 'United States', 0.750, 863, 20),
+	(50, 'Wexadrieu Viejo', 'Rosé', 'Pinot Grigio', 'France', 0.750, 1276, 14),
+	(51, 'Wumbiheim Adega', 'White', 'Sauvignon Blanc', 'United States', 0.750, 878, 11),
+	(52, 'Xasis Annata', 'Rosé', 'Sangiovese', 'United States', 0.750, 1340, 16),
+	(53, 'Xirsina Rosado', 'White', 'Chardonnay', 'France', 0.750, 1258, 21),
+	(54, 'Xivrobeutel Blanc', 'Dessert', 'Sherry', 'Italy', 0.750, 1342, 14),
+	(55, 'Xonee', 'Red', 'Pinot Noir', 'Italy', 0.750, 1031, 15),
+	(56, 'Xurno Viejo', 'Red', 'Pinot Noir', 'France', 0.750, 177, 14),
+	(57, 'Zegne Secco', 'Dessert', 'Marsala', 'France', 1, 384, 14),
+	(58, 'Zilung Rosado', 'Red', 'Pinot Noir', 'Chile', 0.750, 466, 9),
+	(59, 'Zulblemante Cépage', 'Red', 'Pinot Noir', 'Italy', 0.750, 1781, 11),
+	(60, 'Zunne Chiaretto', 'Red', 'Cabernet Sauvignon', 'France', 0.750, 1285, 23);
+
+-- select the winestore database
+
+USE winestore;
+
+-- Total number of items in stock:
+
+SELECT SUM(stock) AS items_in_stock
+FROM products;
+
+-- Number of stocks by category and wine varietal/type:
+
+SELECT category, varietal_or_type, SUM(stock) AS num_in_stock
+FROM products
+GROUP BY category, varietal_or_type
+ORDER BY num_in_stock DESC;
+
+-- Total selling price of entire wine inventory
+
+SELECT SUM(unit_price * stock) AS total_selling_price
+FROM products;
+
+--  Top 5 most expensive store items
+
+SELECT product_name, category, varietal_or_type, country, unit_price
+FROM products
+ORDER BY unit_price DESC
+LIMIT 5;
+
+--  Average selling price by wine category
+
+SELECT category, ROUND(AVG(unit_price)) AS ave_selling_price
+FROM products
+GROUP BY category
+ORDER BY ave_selling_price DESC;
