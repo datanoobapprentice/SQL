@@ -13,7 +13,7 @@ CREATE DATABASE winestore;
 
 CREATE TABLE winestore.products
 (
-	product_id TINYINT PRIMARY KEY AUTO_INCREMENT,
+    product_id TINYINT PRIMARY KEY AUTO_INCREMENT,
     product_name VARCHAR(50) NOT NULL,
     category VARCHAR(50),
     varietal_or_type VARCHAR(50),
